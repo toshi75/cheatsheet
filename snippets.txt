@@ -1,0 +1,25 @@
+dconf dump /com/gexperts/Tilix/ >tilix.conf
+dconf load /com/gexperts/Tilix/ < tilix.conf
+
+cd "$(cd "$(dirname "$0")" ;pwd)"
+
+awk '!x[$0]++' |sed '/^$/d'
+
+|grep -o "<title>.*</title>" \
+|sed  -e 's|<title>||g' \
+      -e 's|<\/title>||g' \
+
+ffmpeg -hide_banner -threads auto \
+       -protocol_whitelist http,https,tls,rtp,tcp,udp,crypto
+
+ffmpeg -hide_banner -threads auto \
+       -protocol_blacklist gopher
+
+AAA=$(
+cat <<- ___WORDS___
+12345
+6789
+___WORDS___
+)
+
+
