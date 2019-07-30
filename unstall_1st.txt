@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+cd $HOME
+mkdir -p {mpv,dl,music,pic,dt,shared,template,bin,dev,doc}
+sudo pacman -Sy ccache wget curl git
+
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+cd
+rm -fr ./yay
+yay --nodiffmenu \
+    --noeditmenu \
+    --removemake \
+    --sudoloop \
+    --save
+
+yay -S \
+xsel \
+xclip \
+gimp \
+inkscaspe \
+fontforge \
+axel \
+ksh \
+fish \
+ffmpeg \
+mpv \
+plank \
+xed \
+gedit-plugin \
+pluma \
+ffmpegthumbnailer \
+youtube-dl \
+vscodium-bin
