@@ -1,0 +1,19 @@
+ffmpeg
+
+for i in *.flac ;do
+    ffmpeg -i "$i" -c:a libfdk_aac -q:a 330 -cutoff 15000  "$i.m4a"
+done
+
+ffmpeg -hide_banner -threads auto \
+                    -protocol_whitelist file,http,https,tls,rtp,tcp,udp,crypto \
+                    -i "$$.m3u8" -c copy "TEMP.mp4"
+ffmpeg -hide_banner -threads auto \
+                    -i "TEMP.mp4" -i "COVER.jpg" \
+                    -disposition:v:1 attached_pic \
+                    -map 0 -map 1 -c copy \
+                    -movflags faststart \
+                    /path/to/out.mp4
+
+
+
+
